@@ -5,16 +5,24 @@ import { Stock } from "../drawLayout";
 
 const twseHttpRequest = async (url: string): Promise<any> => {
   return new Promise((resolve, reject) => {
-    https.get(url, (result) => {
-      result.on("data", (data) => {
-        let chunkJSON = JSON.parse(data);
-        if (chunkJSON.rtcode === "0000") {
-          resolve(chunkJSON);
+    const request = https.get(url, (result) => {
+      let data = "";
+      result.on("data", (chunk) => {
+        data = data + chunk.toString();
+      });
+      result.on("end", () => {
+        const body = JSON.parse(data);
+        // console.log(body);
+        if (body.rtcode === "0000") {
+          resolve(body);
         } else {
-          console.log("return code: " + chunkJSON.rtcode);
+          console.log("return code: " + body.rtcode);
           reject("httpRequest: Get data error");
         }
       });
+    });
+    request.on("error", (error) => {
+      console.log("!!!error!!! from https.get", error);
     });
   });
 };
@@ -25,7 +33,9 @@ export function twseApi(stockConfig: StockFormat): Promise<Array<Stock>> {
   const searchTickerUrl = twseUrlPrefix + Object.keys(stockConfig).join("|");
   console.log(Object.keys(stockConfig).join("|"));
   return new Promise(async (resolve) => {
+    console.log("before http request");
     const twseRetData = await twseHttpRequest(searchTickerUrl);
+    console.log("after http request");
 
     const resultArr: Array<Stock> = [];
     const upDownSymbolConfig: string[] = ["🔴", "🟡", "🟢"];
@@ -64,7 +74,9 @@ export function twseApi(stockConfig: StockFormat): Promise<Array<Stock>> {
           fiveSellAmount,
         } = resultStock;
 
-        const config = vscode.workspace.getConfiguration("twse-monitor");
+        const config = vscode.workspace.getConfiguration(
+          "twse-monitor.watchingList"
+        );
         let lastPrice = config[searchTicker];
 
         if (!lastPrice) {
