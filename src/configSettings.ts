@@ -67,7 +67,7 @@ export class StockProvider implements vscode.TreeDataProvider<Stock> {
     const result = await vscode.window.showInputBox({
       value: "",
       prompt:
-        '輸入股票代號並使用"半形空白"添加多筆, e.g., 2002 2412, (目前只支援上市公司，興櫃/上櫃尚未支援)',
+        '輸入股票代號並使用"半形空白"添加多筆, e.g., 2002 2412, (目前只支援上市/上櫃公司，興櫃尚未支援)',
       placeHolder: "Add Stock to List",
     });
 
