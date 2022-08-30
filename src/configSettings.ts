@@ -35,6 +35,7 @@ export class StockProvider implements vscode.TreeDataProvider<Stock> {
 
   async fetchConfig(stock: { [key: string]: Array<string> }) {
     const result = await twseApi(stock);
+    console.log("fetch from twse api success");
     const insertStockObj: { [key: string]: number } = {};
     result.forEach((stockInfo) => {
       if (stockInfo) {
@@ -56,7 +57,9 @@ export class StockProvider implements vscode.TreeDataProvider<Stock> {
       .getConfiguration()
       .get("twse-monitor.watchingList", {});
 
+    console.log("before fetch");
     const result: Array<Stock> = await this.fetchConfig(config);
+    console.log("after fetch");
     return result;
   }
 
