@@ -76,9 +76,13 @@ export class StockProvider implements vscode.TreeDataProvider<Stock> {
       const newStock: { [key: string]: Array<string> } = {};
       for (const stock of codeArray) {
         let tempStock = stock.trim();
+        let tempStockTse = "";
+        let tempStockOtc = "";
         if (stock !== "") {
-          tempStock = "tse_" + tempStock + ".tw";
-          newStock[tempStock] = [];
+          tempStockTse = "tse_" + tempStock + ".tw";
+          tempStockOtc = "otc_" + tempStock + ".tw";
+          newStock[tempStockTse] = [];
+          newStock[tempStockOtc] = [];
         }
       }
 

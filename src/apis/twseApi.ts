@@ -49,7 +49,7 @@ export function twseApi(stockConfig: StockFormat): Promise<Array<Stock>> {
       resultStock = {
         name: jsonDataPrefix.n,
         ticker: jsonDataPrefix.c,
-        searchTicker: "tse_" + jsonDataPrefix.c + ".tw",
+        searchTicker: jsonDataPrefix.ex + "_" + jsonDataPrefix.ch,
         now: +jsonDataPrefix.z,
         todayOpen: jsonDataPrefix.o,
         lastClose: +jsonDataPrefix.y, //The unary plus operator converts its operand to Number type, check https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators
