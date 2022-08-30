@@ -44,7 +44,6 @@ export class StockProvider implements vscode.TreeDataProvider<Stock> {
          * stockInfo.list.searchTicker = tse_2412.tw
          * stockInfo.list.now = 123
          */
-        //
         insertStockObj[stockInfo.list.searchTicker] = stockInfo.list.now;
       }
     });
