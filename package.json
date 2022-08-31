@@ -1,7 +1,7 @@
 {
   "name": "vscode-twse-monitor",
   "displayName": "TWSE - Taiwan stock monitor",
-  "description": "",
+  "description": "台股低調看盤，上班低調盯盤",
   "icon": "media/extensionIcon/stock.png",
   "version": "0.2.1",
   "publisher": "pinshengjuan",
