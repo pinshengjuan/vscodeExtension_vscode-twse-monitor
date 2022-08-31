@@ -3,7 +3,7 @@
   "displayName": "TWSE - Taiwan stock monitor",
   "description": "",
   "icon": "media/extensionIcon/stock.png",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "publisher": "pinshengjuan",
   "engines": {
     "vscode": "^1.70.0"
