@@ -17,7 +17,7 @@
 
 [台灣證券交易所](https://mis.twse.com.tw/stock/index.jsp)
 
-## 已知問題之臨時解決辦法
+## Limitation
 
-- 若安裝完成按"+"輸入完代號沒反應且 settings.json 內有出現剛剛輸入的代號，請按 F1 輸入 reload 選擇 reload window
-- 若 watching list 內只有一筆資料且需要刪除它時，請至 settings.json 內將整個 twse-monitor.watchingList 刪除
+- 新增第一檔股票後會 reload window 讓資料正常顯示
+- List 中只剩一檔股票且選擇刪除時會 reload window 讓 List 能清空
