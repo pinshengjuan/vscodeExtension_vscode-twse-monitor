@@ -3,7 +3,7 @@
   "displayName": "Taiwan stock monitors",
   "description": "台股低調看盤，上班低調盯盤",
   "icon": "media/extensionIcon/stock.png",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "publisher": "pinshengjuan",
   "engines": {
     "vscode": "^1.70.0"

@@ -2,6 +2,12 @@
 
 All notable changes to the "twse-monitor" extension will be documented in this file.
 
+### 0.2.2
+
+- 修改 display name
+- 修改 Readme
+- 增加 keywords
+
 ### 0.2.1
 
 - 更新頻率改為 2 秒
