@@ -5,11 +5,11 @@ export function activate(context: ExtensionContext) {
   const nodeProvider = new StockProvider();
 
   /**
-   * set refreshing rate 10 seconds
+   * set refreshing rate 2 seconds
    */
   setInterval(() => {
     nodeProvider._onDidChangeTreeData.fire();
-  }, 10 * 1000);
+  }, 2 * 1000);
 
   window.registerTreeDataProvider("twse-monitor", nodeProvider);
 
