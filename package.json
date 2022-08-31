@@ -16,7 +16,10 @@
     "Taiwan",
     "股票",
     "stock",
-    "twse"
+    "twse",
+    "臺股",
+    "看盤",
+    "盯盤"
   ],
   "repository": {
     "type": "git",
