@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import { Stock } from "./drawLayout";
 import { twseApi } from "./apis/twseApi";
 import { StockFormat, IndividualSecurities } from "./utils/stockFormat";
+import ListCheck from "./utils/listCheck";
 
 export class StockProvider implements vscode.TreeDataProvider<Stock> {
   public _onDidChangeTreeData: vscode.EventEmitter<Stock | undefined | void> =
@@ -69,6 +70,7 @@ export class StockProvider implements vscode.TreeDataProvider<Stock> {
         '輸入股票代號並使用"半形空白"添加多筆, e.g., 2002 2412, (目前只支援上市/上櫃公司，興櫃尚未支援)',
       placeHolder: "Add Stock to List",
     });
+    const reloadWindow: boolean = ListCheck.isEmptyList();
 
     if (result !== undefined) {
       const codeArray = result.split(/[ ]/);
@@ -90,6 +92,9 @@ export class StockProvider implements vscode.TreeDataProvider<Stock> {
        */
       await this.fetchConfig(newStock);
       this._onDidChangeTreeData.fire();
+      if (reloadWindow === true) {
+        vscode.commands.executeCommand("workbench.action.reloadWindow");
+      }
     }
   }
 
@@ -107,6 +112,9 @@ export class StockProvider implements vscode.TreeDataProvider<Stock> {
         .then(() => {
           resolve("update success on remove config");
           this._onDidChangeTreeData.fire();
+          if (ListCheck.isBecomeEmptyList() === true) {
+            vscode.commands.executeCommand("workbench.action.reloadWindow");
+          }
         });
     });
   }
