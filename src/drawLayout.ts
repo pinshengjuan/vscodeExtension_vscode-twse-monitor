@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { IndividualSecurities } from "./apis/twseApi";
+import { IndividualSecurities } from "./utils/stockFormat";
 import StrProcess from "./utils/strProcess";
 
 export class Stock extends vscode.TreeItem {

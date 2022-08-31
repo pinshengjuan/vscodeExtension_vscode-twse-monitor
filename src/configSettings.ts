@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import { Stock } from "./drawLayout";
-import { twseApi, IndividualSecurities } from "./apis/twseApi";
-import { StockFormat } from "./utils/stockFormat";
+import { twseApi } from "./apis/twseApi";
+import { StockFormat, IndividualSecurities } from "./utils/stockFormat";
 
 export class StockProvider implements vscode.TreeDataProvider<Stock> {
   public _onDidChangeTreeData: vscode.EventEmitter<Stock | undefined | void> =
@@ -97,15 +97,17 @@ export class StockProvider implements vscode.TreeDataProvider<Stock> {
     return new Promise((resolve) => {
       const { list } = stock;
       const config = vscode.workspace.getConfiguration();
-      const tickets: StockFormat = Object.assign(
+      var watchingList: StockFormat = Object.assign(
         {},
         config.get("twse-monitor.watchingList", {})
       );
-      delete tickets[list.searchTicker];
-      config.update("twse-monitor.watchingList", tickets, true).then(() => {
-        resolve("update success on remove config");
-        this._onDidChangeTreeData.fire();
-      });
+      delete watchingList[list.searchTicker];
+      config
+        .update("twse-monitor.watchingList", watchingList, true)
+        .then(() => {
+          resolve("update success on remove config");
+          this._onDidChangeTreeData.fire();
+        });
     });
   }
 }
