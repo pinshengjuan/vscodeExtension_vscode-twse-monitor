@@ -1,23 +1,21 @@
-# TWSE - Taiwan stock monitor
+## 認真 Coding 也要關心自己的錢錢
 
-認真 Coding 之餘撇一眼關心您的錢錢
-
-## Usage
+### Usage
 
 安裝之後在 Explorer 下方會出現 "WHERE MY MONEY GOES".
 
-- 按 "+" 新增股票到 list 中，輸入時請輸入股票代號(例: 2609 或 2603)，新增多筆時請用半形空白隔開
+- 按 "+" 新增股票到 list 中，輸入時請輸入股票代號(例: 2609 或 2603)，新增多筆時請用半形空白隔開(例: 2609 0050 2330)
   ![](media/gif/twse-add.gif)
 - 要刪除時請對該股票按右鍵選 remove
   ![](media/gif/twse-remove.gif)
 - 將游標放到該檔股票上可查看詳細資訊
   ![](media/gif/twse-detail.gif)
 
-## 資料來源
+### 資料來源
 
 [台灣證券交易所](https://mis.twse.com.tw/stock/index.jsp)
 
-## Limitation
+### Limitation
 
 - 新增第一檔股票後會 reload window 讓資料正常顯示
 - List 中只剩一檔股票且選擇刪除時會 reload window 讓 List 能清空
