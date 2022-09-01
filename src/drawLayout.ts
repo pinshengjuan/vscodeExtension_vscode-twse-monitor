@@ -12,7 +12,7 @@ export class Stock extends vscode.TreeItem {
         info.name,
         9,
         true //full width
-      )} ${StrProcess.strFormatting(info.changeRate, 10)} ${info.now}`
+      )} ${StrProcess.strFormatting(info.userDefinedDisplay, 10)} ${info.now}`
     );
     this.list = info;
 

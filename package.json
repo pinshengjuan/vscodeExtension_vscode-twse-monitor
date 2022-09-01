@@ -40,6 +40,15 @@
           "type": "object",
           "default": {},
           "description": "your watching list"
+        },
+        "twse-monitor.displayChangeUnitIn": {
+          "type": "string",
+          "default": "百分比",
+          "enum": [
+            "元",
+            "百分比"
+          ],
+          "description": "List上漲跌的單位(百分比/元)"
         }
       }
     },

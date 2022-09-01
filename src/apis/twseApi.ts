@@ -64,6 +64,7 @@ export function twseApi(stockConfig: StockFormat): Promise<Array<Stock>> {
         fiveBuyAmount: [],
         fiveSell: [],
         fiveSellAmount: [],
+        userDefinedDisplay: "",
       };
       if (resultStock !== undefined) {
         const {
@@ -120,6 +121,16 @@ export function twseApi(stockConfig: StockFormat): Promise<Array<Stock>> {
           fiveSell.push(+jsonDataPrefix.a.split("_")[i]);
           fiveSellAmount.push(+jsonDataPrefix.f.split("_")[i]);
         }
+
+        //在這邊修改使用者想要顯示在list上漲跌的單位(元 / 百分比);
+        const vscConfig = vscode.workspace.getConfiguration("twse-monitor");
+        const userDefineConfig: string = vscConfig["displayChangeUnitIn"];
+        if (userDefineConfig === "元") {
+          resultStock.userDefinedDisplay = resultStock.changeAmount.toString();
+        } else {
+          resultStock.userDefinedDisplay = resultStock.changeRate;
+        }
+
         resultArr.push(new Stock(resultStock));
       }
     }

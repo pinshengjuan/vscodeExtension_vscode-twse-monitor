@@ -21,4 +21,5 @@ export interface IndividualSecurities {
   fiveBuyAmount: number[]; //五檔買量
   fiveSell: number[]; //五檔賣價
   fiveSellAmount: number[]; //五檔賣量
+  userDefinedDisplay: string; //使用者自行在settings.json選擇顯示的漲跌單位(百分比/元)
 }
