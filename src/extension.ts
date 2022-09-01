@@ -1,15 +1,17 @@
-import { ExtensionContext, commands, window } from "vscode";
+import { ExtensionContext, commands, window, workspace } from "vscode";
 import { StockProvider } from "./configSettings";
 
 export function activate(context: ExtensionContext) {
   const nodeProvider = new StockProvider();
 
   /**
-   * set refreshing rate 2 seconds
+   * set refreshing rate by user defined
    */
+  const config = workspace.getConfiguration("twse-monitor");
+  const refreshingRate: number = config["refreshingRate"];
   setInterval(() => {
     nodeProvider._onDidChangeTreeData.fire();
-  }, 2 * 1000);
+  }, refreshingRate * 1000);
 
   window.registerTreeDataProvider("twse-monitor", nodeProvider);
 
