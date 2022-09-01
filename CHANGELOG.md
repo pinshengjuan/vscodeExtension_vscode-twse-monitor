@@ -2,6 +2,11 @@
 
 All notable changes to the "twse-monitor" extension will be documented in this file.
 
+### 1.0.0
+
+- 新增選項: List 上漲跌的單位可選擇"百分比"或是"元"
+- 新增選項: 可調整更新速率(最低 2 秒更新一次)
+
 ### 0.2.2
 
 - 修改 display name
