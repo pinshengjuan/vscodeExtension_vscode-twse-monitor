@@ -48,13 +48,13 @@
             "元",
             "百分比"
           ],
-          "description": "List上漲跌的單位(百分比/元)"
+          "description": "列表上漲跌的單位(百分比/元)"
         },
         "twse-monitor.refreshingRate": {
           "type": "number",
           "default": 10,
           "minimum": 2,
-          "description": "單位: 秒\n設定越短的時間則鼠標停在個股上顯示的詳細資訊的時間也越短"
+          "description": "單位: 秒\n列表上股票的更新頻率\n(設定越短的時間則鼠標停在個股上顯示的詳細資訊的時間也越短)"
         }
       }
     },
